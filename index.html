@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Key Detection</title>
-    <script type="text/javascript" src="./cornify.js"></script>
-    <link rel="icon" href="https://fav.farm/🔥" />
-  </head>
-  <body>
-    <script></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Key Detection</title>
+  <script type="text/javascript" src="./cornify.js"></script>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+
+<body>
+  <script>
+
+    let konamiCodeArr = []
+    const secretCode = 'dyrektor'
+    // sekretny kod ma 8 znaków, i tyle potrzebujemy żeby maksymalnie pojawiało się w naszej tablicy konamiCodeArr
+
+    window.addEventListener('keyup', e => {
+
+      konamiCodeArr.push(e.key)
+      konamiCodeArr.splice(-secretCode.length - 1, konamiCodeArr.length - secretCode.length)
+      console.log(konamiCodeArr);
+      //         Pierwszy argument -secretCode.length - 1 to indeks, od którego rozpoczyna się usuwanie elementów. Używając negatywnego indeksu, usuwa elementy z tablicy zaczynając od końca. Wyrażenie -secretCode.length - 1 oblicza ten indeks.
+      // Drugi argument konamiCodeArr.length - secretCode.length określa liczbę elementów do usunięcia. Różnica między długością tablicy konamiCodeArr a długością secretCode zapewnia usunięcie odpowiedniej liczby elementów z tablicy.
+      // Ostatecznie, ta linia kodu usuwa określoną liczbę elementów z tablicy konamiCodeArr, rozpoczynając od końca tablicy i usuwając odpowiednią liczbę elementów, aby dopasować długość tablicy do długości secretCode.
+
+      if (konamiCodeArr.join('').includes(secretCode)) {
+        console.log('DING! DING!');
+        cornify_add()
+      }
+
+    })
+    // wykrywanie puszczonego klawisza na klawiaturze
+  </script>
+</body>
+
 </html>
 
 <!-- Kod Konami to sekwencja klawiszy na klawiaturze, która zyskała popularność w grach wideo. Sekwencja ta została po raz pierwszy użyta w grze "Contra" wydanej przez Konami w 1986 roku, stąd też jej nazwa. Kod Konami często służy do odblokowywania ukrytych funkcji lub ułatwień w grach, jednak został również wykorzystany w innych kontekstach, na przykład na stronach internetowych jako element easter egg. Sekwencja klawiszy Kodu Konami to: góra, góra, dół, dół, lewo, prawo, lewo, prawo, B, A.
